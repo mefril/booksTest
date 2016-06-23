@@ -30,6 +30,7 @@ module.exports = {
         alias: {
             components: srcPathResolver + '/js/components/',
             styles: srcPathResolver + '/styles/',
+            utils: srcPathResolver + '/js/utils'
         }
     }
 };

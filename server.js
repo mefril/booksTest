@@ -4,7 +4,7 @@ const config = require('./web/config/dev');
 const service = require('./server/service');
 const app = express();
 
-app.use("/api/:type/:param", function (req, res) {
+app.use("/api/:type/:param?", function (req, res) {
     let requestType = req.params.type;
     let requestParam = req.params.param;
     

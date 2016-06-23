@@ -13,7 +13,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.use("/api/:type/:param", function (req, res) {
+app.use("/api/:type/:param?", function (req, res) {
     let requestType = req.params.type;
     let requestParam = req.params.param;
 
@@ -25,11 +25,6 @@ app.use("/api/:type/:param", function (req, res) {
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'web/src/index.html'));
 });
-
-// app.get('/bundle.js', function (req, res) {
-//   console.log('ddfdf');
-//     res.sendFile(path.join(__dirname, 'web/build/bundle.js'));
-// });
 
 app.listen(config.port, function (err) {
     if (err) {

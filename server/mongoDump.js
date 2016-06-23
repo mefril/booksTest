@@ -71,6 +71,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/library', function (err, db) {
                 let bookIndex = Math.floor(Math.random() * books.length);
                 let book = books[bookIndex];
                 authorBookArray.push({authorId: author._id, bookId: book._id});
+                updateBooksAuthors(book, author)
             }
         }
         for (let i = 0, length = books.length; i < length; i++) {
@@ -79,20 +80,32 @@ MongoClient.connect('mongodb://127.0.0.1:27017/library', function (err, db) {
                 let authorIndex = Math.floor(Math.random() * authors.length);
                 let author = authors[authorIndex];
                 authorBookArray.push({authorId: author._id, bookId: book._id})
+                updateBooksAuthors(book, author)
             }
         }
         authorBookArray = _.uniqWith(authorBookArray, (ent1, ent2)=> {
             return ent1.authorId === ent2.authorId && ent1.bookId === ent2.bookId;
         });
-        authorBookCollection.insertMany(authorBookArray,(err)=>{
-            if(err){
-                throw err;
-            }
-            console.log('authorBookCollection Inserted');
-            process.exit(0);
-        });
+        let updateBooksPromises = [];
+        for(let i =0, length = books.length; i<length ; i++){
+            let book = books[i];
+            updateBooksPromises.push(bookCollection.save(book));
+        }
+        return Promise.all([authorBookCollection.insertMany(authorBookArray),...updateBooksPromises]);
+    }).then((res)=> {
+        console.log('authorBookCollection Inserted');
+        console.log('books updated');
+        process.exit(0);
+
     });
-    // collection.find().toArray((err,result)=>{
-    //     console.log(result)
-    // });
 });
+
+let updateBooksAuthors = (book, author)=> {
+    if (!book.authors) {
+        book.authors = [author]
+    } else {
+        if (!_.find(book.authors, {_id: author.id})) {
+            book.authors.push(author);
+        }
+    }
+}

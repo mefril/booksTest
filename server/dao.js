@@ -4,7 +4,15 @@ let mongoDB;
 MongoClient.connect('mongodb://127.0.0.1:27017/library', function (err, db) {
     if (err) throw err;
     mongoDB = db;
-    console.log('Connected to db2');
+    console.log('Connected to db "library"');
+    // let getAllBooks =  ()=>{
+    //     let collection = mongoDB.collection('book');
+    //     return collection.find().toArray();
+    // }
+    // getAllBooks().then((res)=>{
+    //     console.log(res[0]);
+    //     console.log(res[1]);
+    // })
 });
 
 module.exports = {
@@ -52,5 +60,9 @@ module.exports = {
     getBookById: (bookId)=>{
         let collection = mongoDB.collection('book');
         return collection.find({_id:bookId}).limit(1).next();
+    },
+    getAllBooks: ()=>{
+        let collection = mongoDB.collection('book');
+        return collection.find().toArray();
     }
 };

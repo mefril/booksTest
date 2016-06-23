@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Router, Route, browserHistory} from 'react-router'
+import AllBooks from './allbooks/AllBooks'
 
 require('styles/common.less');
 
@@ -23,7 +24,7 @@ export default class BooksApp extends Component {
                     </div>
                 </div>
                 <Router history={browserHistory}>
-                    <Route path="/" component={null}/>
+                    <Route path="/" component={AllBooks}/>
                 </Router>
             </div>
         );
