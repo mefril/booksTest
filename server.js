@@ -1,20 +1,17 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var config = require('./web/config/prod');
+const path = require('path');
+const express = require('express');
+const config = require('./web/config/dev');
+const service = require('./server/service');
+const app = express();
 
-var app = express();
-
-// Proxy api requests
-// app.use("/api/*", function (req, res) {
-//     req.url = req.originalUrl;
-//     apiProxy.web(req, res, {
-//         target: {
-//             port: config.restPort,
-//             host: config.restHost
-//         }
-//     });
-// });
+app.use("/api/:type/:param", function (req, res) {
+    let requestType = req.params.type;
+    let requestParam = req.params.param;
+    
+    service.getData(requestType,requestParam).then((result)=> {
+        res.send(result);
+    });
+});
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'web/src/index.html'));
