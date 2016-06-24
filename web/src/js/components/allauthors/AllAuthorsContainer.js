@@ -19,7 +19,9 @@ export default class extends Component {
             AppUtils.httpGet('booksByAuthor/' + authorId).then((result)=> {
                 actions.setBooks(authorId, result.data);
                 this.setState({});
-                callback(result.data);
+                if(callback) {
+                    callback(result.data);
+                }
             })
         }
     };

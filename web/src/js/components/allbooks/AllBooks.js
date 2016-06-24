@@ -5,7 +5,6 @@ import AppUtils from 'utils/AppUtils'
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import AllBooksContainer from './AllBooksContainer'
-import Immutable from 'immutable'
 
 const allBooksStore = createStore(AllBooksReducer);
 

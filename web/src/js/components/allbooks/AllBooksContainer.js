@@ -8,15 +8,21 @@ export default class AllBooksContainer extends Component {
         let bookList = this.props.booksModel && this.props.booksModel.map((book)=> {
                 return <SingleBook key={book._id}
                     {...book}
-                                   // title={book.get('title')}
-                                   // authors={book.get('authors')}
                 />
             });
 
         return (
-            <ul className="allBooksListContainer">
+            <table className="table allBooksListContainer">
+                <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Authors</th>
+                </tr>
+                </thead>
+                <tbody>
                 {bookList}
-            </ul>
+                </tbody>
+            </table>
         )
     }
 }

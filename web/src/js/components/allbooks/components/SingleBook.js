@@ -8,11 +8,10 @@ export default class extends Component{
                 });
 
         return (
-            <li className="singleBookElement">
-                <div className="bookTitle">{this.props.title}</div>
-                <div className="bookDescription">{this.props.description}</div>
-                <div className="bookAuthorsList">{bookList}</div>
-            </li>
+            <tr className="singleBookElement">
+                <td className="bookTitle">{this.props.title}</td>
+                <td className="bookAuthorsList"><ul>{bookList}</ul></td>
+            </tr>
         )
     }
 }

@@ -13,6 +13,10 @@ let config = _.merge({
         './web/src/js/index.js'
     ],
     plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        }),
         new webpack.HotModuleReplacementPlugin,
         new webpack.NoErrorsPlugin()
     ]

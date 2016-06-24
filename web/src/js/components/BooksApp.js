@@ -4,6 +4,7 @@ import AllBooks from './allbooks/AllBooks'
 import AllAuthors from './allauthors/AllAuthors'
 
 require('styles/common.less');
+require('bootstrap-loader'); //Disable it in dev mode after first run to improve performance
 
 export default class BooksApp extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ export default class BooksApp extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <div className="header">
                     <div className="title">
                         <h1>
