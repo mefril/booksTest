@@ -16,9 +16,6 @@ export default class Dropdown extends Component {
 
     }
 
-    componentDidUpdate() {
-    }
-
     handleOptionClick(option) {
         this.handleOptionClick(option);
     }

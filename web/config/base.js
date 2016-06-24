@@ -17,7 +17,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: publicPath
     },
-    port: 8081,
+    port: 8080,
     module: {
         loaders: [
             {
@@ -33,6 +33,10 @@ module.exports = {
             {
                 test: /\.sass/,
                 loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax',
+                include: srcPathResolver
+            },{
+                test: /\.less/,
+                loader: 'style-loader!css-loader!less-loader?outputStyle=expanded&indentedSyntax',
                 include: srcPathResolver
             },
             {

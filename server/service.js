@@ -18,6 +18,9 @@ const getBooksByGenre = (genre) => {
 const getAllBooks = () => {
     return dao.getAllBooks();
 };
+const getAllGenres = () =>{
+    return dao.getAllGenres();
+};
 
 module.exports = {
     getData: (type, param)=> {
@@ -34,10 +37,12 @@ module.exports = {
                 return getBooksByGenre(param);
             case 'allBooks':
                 return getAllBooks(param);
+            case 'allGenres':
+                return getAllGenres();
             default:
                 return new Promise((resolve, reject)=> {
-                    resolve(null);
+                    resolve('unknown request');
                 })
         }
     }
-}
+};

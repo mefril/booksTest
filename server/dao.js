@@ -63,5 +63,9 @@ module.exports = {
     getAllBooks: ()=>{
         let collection = mongoDB.collection('book');
         return collection.find().toArray();
+    },
+    getAllGenres: ()=>{
+        let collection = mongoDB.collection('genre');
+        return collection.find().toArray();
     }
 };

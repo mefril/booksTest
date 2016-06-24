@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Router, Route, browserHistory} from 'react-router'
 import AllBooks from './allbooks/AllBooks'
 import AllAuthors from './allauthors/AllAuthors'
+import Genres from './genre/Genres'
 
 require('styles/common.less');
 require('bootstrap-loader'); //Disable it in dev mode after first run to improve performance
@@ -28,6 +29,7 @@ export default class BooksApp extends Component {
                 <Router history={browserHistory}>
                     <Route path="/books" component={AllBooks}/>
                     <Route path="/authors" component={AllAuthors}/>
+                    <Route path="/genres" component={Genres}/>
                 </Router>
             </div>
         );

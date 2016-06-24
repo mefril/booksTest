@@ -5,7 +5,7 @@ const mockAuthors = JSON.parse('[{"name":"Corina Moore","about":"Deserunt non du
 const _ = require('lodash');
 
 const MAX_BOOKS_PER_AUTHOR = 10;
-const mockGenres = ["horror", "comedy", "detective", "adventure", "western","fantasy"];
+const mockGenres = [{type: "horror"}, {type: "comedy"}, {type: "detective"}, {type: "adventure"}, {type: "western"}, {type: "fantasy"}];
 
 MongoClient.connect('mongodb://127.0.0.1:27017/library', function (err, db) {
     if (err) throw err;
@@ -23,31 +23,12 @@ MongoClient.connect('mongodb://127.0.0.1:27017/library', function (err, db) {
     );
     removePromise.then(()=> {
         console.log('db cleared');
-        let bookPromise = new Promise((resolve, reject)=> {
-            bookCollection.insertMany(mockBooks, (err, result)=> {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(result);
-                }
-            })
-        });
-
-        let authorsPromise = new Promise((resolve, reject)=> {
-            authorsCollection.insertMany(mockAuthors, (err, result)=> {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(result);
-                }
-            })
-        });
         return Promise.all([
-            authorsPromise,
-            bookPromise,
-            mockGenres.insertMany(mockGenres)]);
+            authorsCollection.insertMany(mockAuthors),
+            bookCollection.insertMany(mockBooks),
+            genreCollection.insertMany(mockGenres)]);
     }).then(()=> {
-        console.log('authors and books Inserted');
+        console.log('authors, genres and books Inserted');
         let getAuthorsPromise = new Promise((resolve, reject)=> {
             authorsCollection.find().toArray((err, result)=> {
                 if (err) {
@@ -95,11 +76,11 @@ MongoClient.connect('mongodb://127.0.0.1:27017/library', function (err, db) {
             return ent1.authorId === ent2.authorId && ent1.bookId === ent2.bookId;
         });
         let updateBooksPromises = [];
-        for(let i =0, length = books.length; i<length ; i++){
+        for (let i = 0, length = books.length; i < length; i++) {
             let book = books[i];
             updateBooksPromises.push(bookCollection.save(book));
         }
-        return Promise.all([authorBookCollection.insertMany(authorBookArray),...updateBooksPromises]);
+        return Promise.all([authorBookCollection.insertMany(authorBookArray), ...updateBooksPromises]);
     }).then((res)=> {
         console.log('authorBookCollection Inserted');
         console.log('books updated');
