@@ -44,7 +44,7 @@ export default class Dropdown extends Component {
                                        option={option}
                                        onOptionClick={this.props.goToBook}/>;
             });
-            optionMenu.shift(<GoToAuthorListOption authorId={this.props.authorId}
+            optionMenu.unshift(<GoToAuthorListOption authorId={this.props.authorId}
                                                    goToAuthor={this.props.goToAuthor}/>)
             return optionMenu;
         }
@@ -59,7 +59,7 @@ export default class Dropdown extends Component {
                  className='dropdown'>
                 <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
                         onClick={this.handleMouseClick}>
-                    Written Books
+                    {this.props.authorName}
                     <span className="caret"/></button>
                 <ul className='dropdown-menu'>
                     {options}
