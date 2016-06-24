@@ -13,4 +13,8 @@ export default class AppUtils {
     static httpPost(url, json) {
         return axios.post(this.getApplicationContext() + url, json);
     }
+
+    static isIPad() {
+        return navigator.userAgent.toLowerCase().indexOf("ipad") != -1
+    }
 }

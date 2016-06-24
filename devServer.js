@@ -22,7 +22,7 @@ app.use("/api/:type/:param?", function (req, res) {
     });
 });
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'web/src/index.html'));
 });
 

@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-
+const ObjectId = require('mongodb').ObjectID;
 let mongoDB;
 MongoClient.connect('mongodb://127.0.0.1:27017/library', function (err, db) {
     if (err) throw err;
@@ -38,12 +38,11 @@ module.exports = {
     getBooksByAuthorId: (authorId)=> {
         let authorsBookscollection = mongoDB.collection('authorBook');
         let booksCollection = mongoDB.collection('book');
-        return authorsBookscollection.find({authorId: authorId}).toArray().then((result)=> {
+        return authorsBookscollection.find({authorId: ObjectId(authorId)}).toArray().then((result)=> {
             if (result) {
                 let booksIds = [];
-
                 for (let i = 0, length = result.length; i < length; i++) {
-                    booksIds.push(result.bookId);
+                    booksIds.push(ObjectId(result[i].bookId));
                 }
                 return booksCollection.find({_id: {$in: booksIds}}).toArray();
             }
@@ -53,13 +52,13 @@ module.exports = {
         let collection = mongoDB.collection('author');
         return collection.find().toArray();
     },
-    getAuthorById: (authorId)=>{
+    getAuthorById: (authorId)=> {
         let collection = mongoDB.collection('author');
-        return collection.find({_id:authorId}).limit(1).next();
+        return collection.find({_id: ObjectId(authorId)}).limit(1).next()
     },
     getBookById: (bookId)=>{
         let collection = mongoDB.collection('book');
-        return collection.find({_id:bookId}).limit(1).next();
+        return collection.find({_id: ObjectId(bookId)}).limit(1).next();
     },
     getAllBooks: ()=>{
         let collection = mongoDB.collection('book');
