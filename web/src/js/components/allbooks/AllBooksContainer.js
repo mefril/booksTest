@@ -6,7 +6,9 @@ import BooksTable from './components/BooksTable'
 export default class AllBooksContainer extends Component {
     render() {
         return (
-            <BooksTable books={this.props.booksModel}/> 
+            <div className="sectionContainer">
+                <BooksTable books={this.props.booksModel}/>
+            </div>
         )
     }
 }

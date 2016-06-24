@@ -1,0 +1,50 @@
+.allBooksListContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  table {
+    //background: repeating-linear-gradient(90deg, #ffffff 0%, #c5c5c5  100%);
+
+    width: 100%;
+    &.headerTable {
+      line-height: 8vmin;
+      box-shadow: 0 0 2vmin rgba(0, 0, 0, 0.3);
+      th {
+        text-align: center;
+        font-size: 3vmin;
+      }
+    }
+    th, td {
+      &:nth-child(1) {
+        width: 40%
+      }
+      &:nth-child(2) {
+        width: 60%
+      }
+    }
+  }
+  .bodyTable {
+    top:8vmin;
+    bottom:0;
+    left:0;
+    right:0;
+    position: absolute;
+    line-height: 4vmin;
+    font-size: 2.5vmin;
+
+
+    .singleBookElement {
+      box-shadow: inset 0 0.1vmin 0.5vmin rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+
+      td {
+        //text-align: center;
+        padding-left: 10vmin;
+        text-transform: capitalize;
+        cursor:pointer;
+      }
+    }
+  }
+}

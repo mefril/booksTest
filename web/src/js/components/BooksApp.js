@@ -5,6 +5,7 @@ import AllAuthors from './allauthors/AllAuthors'
 import Genres from './genre/Genres'
 
 require('styles/common.less');
+require('styles/books.less');
 require('bootstrap-loader'); //Disable it in dev mode after first run to improve performance
 
 export default class BooksApp extends Component {

@@ -1,24 +1,49 @@
 import SingleBook from './SingleBook'
-import React from 'react'
+import React, {Component} from 'react'
+import IScroll from 'iscroll'
 
-export default (props) =>{
-    let bookList = props.books && props.books.map((book)=> {
-            return <SingleBook key={book._id}
-                {...book}
-            />
-        });
+export default class extends Component {
 
-    return (
-        <table className="table allBooksListContainer">
-            <thead>
-            <tr>
-                <th>Book Name</th>
-                <th>Authors</th>
-            </tr>
-            </thead>
-            <tbody>
-            {bookList}
-            </tbody>
-        </table>
-    )
+    componentDidMount() {
+        this.scroll = new IScroll(this.refs['scrollableWrapper'],
+            {
+                mouseWheel: true,
+                scrollbars: true,
+                fadeScrollbars: true
+            });
+    }
+
+    componentDidUpdate(){
+        this.scroll&& this.scroll.refresh();
+    }
+
+    render() {
+        let bookList = this.props.books && this.props.books.map((book)=> {
+                return <SingleBook key={book._id}
+                    {...book}
+                />
+            });
+
+        return (
+            <div className="allBooksListContainer">
+                <table className="headerTable">
+                    <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Authors</th>
+                    </tr>
+                    </thead>
+                </table>
+                <div className="bodyTable">
+                    <div className="scrollableWrapper" ref="scrollableWrapper">
+                        <table className="scrollableContainer" >
+                            <tbody>
+                            {bookList}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
