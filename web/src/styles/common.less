@@ -1,90 +1,91 @@
 .scrollableWrapper {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
 
-  &:before {
-    content: '';
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    pointer-events: none;
-    position: absolute;
-    z-index: 100;
-    background-position: center top, center bottom;
-    background-size: 100% .8vmin;
-    background-repeat: repeat-x;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), transparent), linear-gradient(to top, rgba(0, 0, 0, 0.08), transparent);
-  }
+	&:before {
+		content: '';
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		pointer-events: none;
+		position: absolute;
+		z-index: 100;
+		background-position: center top, center bottom;
+		background-size: 100% .8vmin;
+		background-repeat: repeat-x;
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), transparent), linear-gradient(to top, rgba(0, 0, 0, 0.08), transparent);
+	}
 
-  .scrollableContainer {
-    position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
+	.scrollableContainer {
+		position: relative;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
 
-  .scrollableContainerAbsolute {
-    position: absolute;
-  }
+	.scrollableContainerAbsolute {
+		position: absolute;
+	}
 }
-.sectionContainer{
-  top: 6vmin;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
+
+.sectionContainer {
+	top: 6vmin;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: fixed;
 }
 
 .header {
-  width: 100%;
-  height: 6vmin;
-  background: #e4e8eb;
-  box-shadow: 0 0 2vmin rgba(0, 0, 0, 0.3);
-  position: fixed;
-  z-index: 1000;
-  left:0;
-  overflow: hidden;
+	width: 100%;
+	height: 6vmin;
+	background: #e4e8eb;
+	box-shadow: 0 0 2vmin rgba(0, 0, 0, 0.3);
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	overflow: hidden;
 
-  .title {
-    color: #000;
+	.title {
+		color: #000;
 
-    h1 {
-      font-size: 2.3vmin;
-      height: 6vmin;
-      line-height: 6vmin;
-      margin: 0 0 0 1vmin;
-      padding: 0 0 0 7vmin;
-      display: inline-block;
-      cursor: pointer;
-    }
+		h1 {
+			font-size: 2.5vmin;
+			height: 6vmin;
+			line-height: 6vmin;
+			margin: 0 0 0 1vmin;
+			padding: 0 0 0 7vmin;
+			display: inline-block;
+			cursor: pointer;
+		}
 
-    h2 {
-      border-left: .2vmin solid #8996a0;
-      font-size: 2vmin;
-      margin: 0 0 0 1.5vmin;
-      padding: 0 0 0 1.5vmin;
-      display: inline-block;
-      cursor: pointer;
-    }
-  }
+		h2 {
+			border-left: .2vmin solid #8996a0;
+			font-size: 2.3vmin;
+			margin: 0 0 0 1.5vmin;
+			padding: 0 0 0 1.5vmin;
+			display: inline-block;
+			cursor: pointer;
+		}
+	}
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	box-sizing: border-box;
+	font-size: 2vmin;
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 
-  user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

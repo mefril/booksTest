@@ -41,19 +41,18 @@ export default class Dropdown extends Component {
                                        option={option}
                                        onOptionClick={this.props.goToBook}/>;
             });
+            optionMenu.unshift(<li className="bookListHeader">List of Books:</li>)
             optionMenu.unshift(<GoToAuthorListOption authorId={this.props.authorId}
-                                                   goToAuthor={this.props.goToAuthor}/>)
+                                                   goToAuthor={this.props.goToAuthor}/>);
             return optionMenu;
         }
     }
 
     render() {
-        // var optionsContainerWrapper = ClassNames("optionScrollContainer scrollableWrapper", {show: this.state.isOpen});
-        // var expanded = this.state.isOpen ? 'open' : "";
         var options = this.buildMenu();
         return (
-            <div id={this.dropdownId} ref='container'
-                 className='dropdown'>
+            <div id={this.dropdownId}
+                 className='dropdown singleAuthor'>
                 <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
                         onClick={this.handleMouseClick}>
                     {this.props.authorName}
@@ -66,6 +65,5 @@ export default class Dropdown extends Component {
 }
 Dropdown.defaultProps = {
     options: [],
-    componentClassName: 'selectContainer',
     selectRowClassName: 'selectRow'
 };
