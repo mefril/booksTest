@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import AppUtils from 'utils/AppUtils'
-
+import {browserHistory} from 'react-router'
 
 //get rid of redux since there are no data updates
 export default class extends Component {
@@ -16,9 +16,14 @@ export default class extends Component {
         })
     }
 
+    goToBook = (bookId)=> {
+        browserHistory.push('/singleBook/' + bookId);
+    };
+
 //TODO - add scroll for books
     render() {
-        let bookList = this.books && this.books.map(book=><li className="singleBook">{book.title}</li>);
+        let bookList = this.books && this.books.map(book=><li className="singleBook"
+                                                              onClick={this.goToBook.bind(this,book._id)}>{book.title}</li>);
 
         return <div className="sectionContainer singleAuthorSection">
             <div className="leftPanel">

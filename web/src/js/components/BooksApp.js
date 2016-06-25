@@ -18,6 +18,13 @@ export default class BooksApp extends Component {
         super(props);
     }
 
+    goToAllBooks=()=>{
+        browserHistory.push('/books');
+    }
+    goToAllAuthors=()=>{
+        browserHistory.push('/authors');
+    }
+
     render() {
         return (
             <div className="container">
@@ -29,15 +36,20 @@ export default class BooksApp extends Component {
                             <label>A</label>
                             <span>pp</span>
                         </h1>
-                        <h2>Welcome!</h2>
+                        <div className="routeButtons">
+                            <label onClick={this.goToAllBooks}>All Books</label>
+                            <label onClick={this.goToAllAuthors}>All Authors</label>
+                        </div>
                     </div>
+
                 </div>
                 <Router history={browserHistory}>
                     <Route path="/books" component={AllBooks}/>
                     <Route path="/authors" component={AllAuthors}/>
-                    <Route path="/genres" component={Genres}/>
+                    <Route path="/genres/:genreType" component={Genres}/>
                     <Route path="/singleAuthor/:authorId" component={SingleAuthor}/>
                     <Route path="/singleBook/:bookId" component={SingleBook}/>
+                    <Route path="/" component={null}/>
                 </Router>
             </div>
         );

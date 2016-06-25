@@ -19,6 +19,10 @@ export default class extends Component{
             let books = response[1].data;
             store.dispatch(GenresActions.setBooks(books));
             store.dispatch(GenresActions.setGenres(genres));
+            let genreType = this.props.params.genreType;
+            if(genreType){
+                store.dispatch(GenresActions.chooseGenre(genreType));
+            }
             this.setState({});
         })
     }

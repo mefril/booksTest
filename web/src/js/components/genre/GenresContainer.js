@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import * as Actions from './actions/GenresActions'
 import {bindActionCreators} from 'redux'
 import BooksTable from './../allbooks/components/BooksTable'
+import {browserHistory} from 'react-router'
 
 let actions;
 
@@ -13,7 +14,13 @@ export default class AllBooksContainer extends Component {
     onGenreClick = (genreType) => {
         actions.chooseGenre(genreType)
     };
+    goToAuthor = (authorId)=> {
+        browserHistory.push('/singleAuthor/' + authorId);
+    };
 
+    goToBook = (bookId)=> {
+        browserHistory.push('/singleBook/' + bookId);
+    };
     render() {
         let {dispatch} = this.props;
         actions = bindActionCreators(Actions, dispatch);
@@ -24,22 +31,21 @@ export default class AllBooksContainer extends Component {
         let genreList = genres && genres.map((genre)=> {
                 return <SingleGenre key={genre.get('_id')}
                                     type={genre.get('type')}
+                                    selected={selectedGenre === genre.get('type')}
                                     onClick={this.onGenreClick}
                 />
             });
         let booksList = selectedGenre && books && books
-                .filter((book)=>book.get('genre') === selectedGenre)
-                // .map(book=><SingleBook key={book.get('_id')}
-                //                        authors={book.get('authors').toJS()}
-                //                        title={book.get('title')}
-                // />);
+                .filter((book)=>book.get('genre') === selectedGenre);
         return (
             <div className="genresSectionContainer sectionContainer">
                 <ul className="genresList list">
                     {genreList}
                 </ul>
                 <div className="booksListWrapper">
-                    <BooksTable books={booksList&&booksList.toJS()}/>
+                    <BooksTable books={booksList&&booksList.toJS()}
+                                goToBook={this.goToBook}
+                                goToAuthor={this.goToAuthor}/>
                 </div>
             </div>
         )

@@ -16,7 +16,8 @@ export default class extends Component {
             {
                 mouseWheel: true,
                 scrollbars: true,
-                fadeScrollbars: true
+                fadeScrollbars: true,
+                click:true
             });
     }
 

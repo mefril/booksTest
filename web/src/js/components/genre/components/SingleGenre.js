@@ -8,7 +8,7 @@ export default class extends Component {
 
     render() {
         return (
-            <li className="singleGenre" onClick={this.onClick}>
+            <li className={"singleGenre"+(this.props.selected?' selected':'')} onClick={this.onClick}>
                 {this.props.type}
             </li>
         )
