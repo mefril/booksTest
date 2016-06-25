@@ -37,13 +37,15 @@ export default class Dropdown extends Component {
             var optionMenu = this.props.options.map((option)=> {
                 i = i + 1;
                 atLeastOneResult = true;
-                return <DropdownOption key={i} 
+                return <DropdownOption key={i}
                                        option={option}
                                        onOptionClick={this.props.goToBook}/>;
             });
-            optionMenu.unshift(<li className="bookListHeader">List of Books:</li>)
-            optionMenu.unshift(<GoToAuthorListOption authorId={this.props.authorId}
-                                                   goToAuthor={this.props.goToAuthor}/>);
+            optionMenu.unshift(<li key={this.props.authorId+'_1'}
+                                   className="bookListHeader">List of Books:</li>)
+            optionMenu.unshift(<GoToAuthorListOption key={this.props.authorId+'_2'}
+                                                     authorId={this.props.authorId}
+                                                     goToAuthor={this.props.goToAuthor}/>);
             return optionMenu;
         }
     }

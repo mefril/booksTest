@@ -23,6 +23,7 @@ export default class extends Component {
 //TODO - add scroll for books
     render() {
         let bookList = this.books && this.books.map(book=><li className="singleBook"
+                                                              key={book._id}
                                                               onClick={this.goToBook.bind(this,book._id)}>{book.title}</li>);
 
         return <div className="sectionContainer singleAuthorSection">

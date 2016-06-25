@@ -22,6 +22,7 @@ export default class extends Component {
 
     render() {
         let authorList = this.book && this.book.authors.map(author=><li className="singleAuthor"
+                                                                        key={author._id}
                                                                         onClick={this.goToAuthor.bind(this,author._id)}>{author.name}</li>);
 
         return <div className="sectionContainer singleBookSectionContainer">
