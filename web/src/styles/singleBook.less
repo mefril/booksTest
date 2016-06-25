@@ -1,0 +1,57 @@
+.singleBookSectionContainer {
+	.leftPanel {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		top: 0;
+		width: 40vmin;
+		padding: 0 1vmin 0 3vmin;
+		box-shadow: inset 0 0 2vmin rgba(0, 0, 0, 0.3);
+		background: repeating-linear-gradient(90deg, #ffffff 0%, #c5c5c5 100%);
+
+		.authorSection {
+			top: 30vmin;
+			right: 0;
+			left: 3vmin;
+			bottom: 0;
+			position: absolute;
+
+			.authorList {
+				margin-left: 4vmin;
+				line-height: 3vmin;
+				border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+				text-transform: capitalize;
+				cursor: pointer;
+			}
+		}
+		.titleSection {
+			margin-top: 1vmin;
+			.bookTitle {
+				font-size: 4vmin;
+			}
+			text-transform: capitalize;
+		}
+		.bookGenreSection {
+			margin-top: 1vmin;
+			.bookGenre {
+				font-size: 4vmin;
+			}
+			text-transform: capitalize;
+			cursor:pointer;
+		}
+	}
+	.rightPanel {
+		position: absolute;
+		left: 40vmin;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		background: repeating-linear-gradient(#ffffff 0%, #c5c5c5 100%);
+		.bookDescription {
+			margin: 2vmin;
+		}
+		label {
+			margin: 2vmin;
+		}
+	}
+}
