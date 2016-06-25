@@ -54,7 +54,7 @@ export default class extends Component {
             });
 
         return (
-            <div className="sectionContainer">
+            <div className="sectionContainer authorsSection">
                 <div className="leftPanel">
                 </div>
 

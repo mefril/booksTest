@@ -3,10 +3,12 @@ import {Router, Route, browserHistory} from 'react-router'
 import AllBooks from './allbooks/AllBooks'
 import AllAuthors from './allauthors/AllAuthors'
 import Genres from './genre/Genres'
+import SingleAuthor from './singleAuthor/SingleAuthor'
 
 require('styles/common.less');
 require('styles/books.less');
 require('styles/authors.less');
+require('styles/singleAuthor.less');
 require('bootstrap-loader'); //Disable it in dev mode after first run to improve performance
 
 export default class BooksApp extends Component {
@@ -32,6 +34,7 @@ export default class BooksApp extends Component {
                     <Route path="/books" component={AllBooks}/>
                     <Route path="/authors" component={AllAuthors}/>
                     <Route path="/genres" component={Genres}/>
+                    <Route path="/singleAuthor/:authorId" component={SingleAuthor}/>
                 </Router>
             </div>
         );
