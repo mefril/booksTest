@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import IScroll from 'iscroll'
 import AppUtils from 'utils/AppUtils'
 import * as Actions from './actions/AllAuthorsActions'
+import {browserHistory} from 'react-router'
 
 let actions;
 
@@ -22,6 +23,14 @@ export default class extends Component {
     componentDidUpdate() {
         this.scroll && this.scroll.refresh();
     }
+
+    goToAuthor = (authorId)=> {
+        browserHistory.push('/singleAuthor/' + authorId);
+    };
+    
+    goToBook = (bookId)=> {
+        browserHistory.push('/singleBook/' + bookId);
+    };
 
     loadBooks = (authorId, callback) => {
         let currentAuthor = _.find(this.props.authorsModel, {_id: authorId});
@@ -49,6 +58,8 @@ export default class extends Component {
                 return <SingleAuthor key={author._id}
                                      loadBooks={this.loadBooks}
                                      authorId={author._id}
+                                     goToBook={this.goToBook}
+                                     goToAuthor={this.goToAuthor}
                     {...author}
                 />
             });

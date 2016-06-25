@@ -8,8 +8,8 @@ export default class extends Component{
                 <Dropdown options={this.props.books}
                           authorName={this.props.name}
                           authorId={this.props.authorId}
-                          onOptionClick={this.props.onBookClick}
-                          onAuthorClick={this.props.onAuthorClick}
+                          goToBook={this.props.goToBook}
+                          goToAuthor={this.props.goToAuthor}
                           loadBooks={this.props.loadBooks}/>
             </div>
         )

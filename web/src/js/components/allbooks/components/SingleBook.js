@@ -1,16 +1,24 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import BookAuthor from './BookAuthor'
 
-export default class extends Component{
-    render(){
-        let bookList = this.props.authors && this.props.authors.map((author)=> {
-                    return <BookAuthor key={author._id} author={author}/>
-                });
+export default class extends Component {
+    goToBook = ()=> {
+        this.props.goToBook(this.props._id);
+    };
+
+    render() {
+        let authorList = this.props.authors && this.props.authors.map((author)=> {
+                return <BookAuthor key={author._id}
+                                   author={author}
+                                   goToAuthor={this.props.goToAuthor}/>
+            });
 
         return (
             <tr className="singleBookElement">
-                <td className="bookTitle">{this.props.title}</td>
-                <td className="bookAuthorsList"><ul>{bookList}</ul></td>
+                <td className="bookTitle" onClick={this.goToBook}>{this.props.title}</td>
+                <td className="bookAuthorsList">
+                    <ul>{authorList}</ul>
+                </td>
             </tr>
         )
     }

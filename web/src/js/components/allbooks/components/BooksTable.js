@@ -13,14 +13,16 @@ export default class extends Component {
             });
     }
 
-    componentDidUpdate(){
-        this.scroll&& this.scroll.refresh();
+    componentDidUpdate() {
+        this.scroll && this.scroll.refresh();
     }
 
     render() {
         let bookList = this.props.books && this.props.books.map((book)=> {
                 return <SingleBook key={book._id}
                     {...book}
+                                   goToBook={this.props.goToBook}
+                                   goToAuthor={this.props.goToAuthor}
                 />
             });
 
@@ -36,7 +38,7 @@ export default class extends Component {
                 </table>
                 <div className="bodyTable">
                     <div className="scrollableWrapper" ref="scrollableWrapper">
-                        <table className="scrollableContainer" >
+                        <table className="scrollableContainer">
                             <tbody>
                             {bookList}
                             </tbody>
